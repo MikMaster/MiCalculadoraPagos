@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0c101c">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="Calculadora independiente para estimar cuánto recargar en bolívares, teniendo en cuenta comisiones y gastos.">
+  <title>Calculadora de pagos · Ubii</title>
+  <style>
+    :root{--bg:#0c101c;--surface:#171d2c;--surface2:#20283a;--border:#303b50;--muted:#a4b0c4;--text:#f6f8fd;--accent:#49e2b3;--accent-ink:#063b30;--warn:#ffcc78;--highlight:#0e3d36}
+    *{box-sizing:border-box}html{font-size:16px;-webkit-text-size-adjust:100%}body{margin:0;background:radial-gradient(ellipse 85% 20% at 50% -2%,#18384a 0%,transparent 75%),var(--bg);color:var(--text);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;line-height:1.45;min-height:100vh}button,input,summary{font:inherit}button{touch-action:manipulation;cursor:pointer}main{max-width:560px;margin:0 auto;padding:24px 17px calc(30px + env(safe-area-inset-bottom))}.mast{display:flex;align-items:center;gap:12px;margin:5px 0 22px}.logo{display:grid;place-items:center;width:46px;height:46px;background:#183b35;color:var(--accent);border:1px solid #356a5b;border-radius:15px;font-size:24px;font-weight:900}.brand{margin:0;font-size:20px;letter-spacing:-.5px;font-weight:770}.subbrand{margin:1px 0 0;color:var(--muted);font-size:12px}.eyebrow{color:var(--accent);letter-spacing:.12em;font-size:11px;font-weight:800;margin:0 0 8px;text-transform:uppercase}.panel{background:linear-gradient(160deg,#192132 0%,#151a28 100%);border:1px solid #303b4b;border-radius:22px;padding:20px;box-shadow:0 14px 40px #00000018;margin-bottom:16px}h1{font-size:29px;line-height:1.12;letter-spacing:-.9px;margin:0 0 11px}p{margin:0 0 14px}.lede{font-size:14px;color:var(--muted);line-height:1.5}.field-label{font-weight:680;font-size:14px;display:block;margin-bottom:9px}.input-frame{display:flex;align-items:center;gap:10px;background:#0f1622;border:1.5px solid #41516a;border-radius:15px;padding:0 14px;min-height:62px}.input-frame:focus-within{border-color:var(--accent);box-shadow:0 0 0 3px #49e2b31d}.prefix{font-size:18px;font-weight:740;color:var(--muted);white-space:nowrap}.moneyinput{min-width:0;flex:1;background:transparent;border:0;outline:0;color:var(--text);font-size:28px;letter-spacing:-.5px;font-weight:760;padding:13px 0;width:100%;font-variant-numeric:tabular-nums}.hint{font-size:12px;color:var(--muted);margin:8px 0 0}.question{margin:22px 0 9px;font-size:14px;font-weight:700}.radio-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}.radio-card{position:relative;display:block;min-width:0}.radio-card input{position:absolute;opacity:0;inset:0;cursor:pointer}.radio-ui{border:1.5px solid var(--border);background:#101723;border-radius:14px;padding:13px 11px;min-height:102px;display:flex;flex-direction:column;gap:5px;justify-content:center}.radio-card input:checked+.radio-ui{border-color:var(--accent);background:var(--highlight)}.radio-card input:focus-visible+.radio-ui{outline:3px solid #fff;outline-offset:2px}.radio-title{font-size:14px;font-weight:770}.radio-desc{font-size:11px;color:var(--muted);line-height:1.4}.radio-card input:checked+.radio-ui .radio-desc{color:#beeadc}.result{background:linear-gradient(150deg,#1a3b34,#12342f 68%,#0f2828);border:1px solid #3a9c79;border-radius:22px;padding:23px 21px 20px;margin-bottom:16px}.result-label{font-size:14px;color:#cdece1;font-weight:660}.result-sum{font-size:clamp(31px,8vw,48px);line-height:1.1;letter-spacing:-1.4px;font-weight:850;margin:12px 0 10px;overflow-wrap:anywhere;font-variant-numeric:tabular-nums}.result-detail{font-size:13px;color:#c7e8dd;line-height:1.5;margin:0}.primary{display:flex;justify-content:center;align-items:center;gap:9px;width:100%;padding:14px 16px;background:var(--accent);color:var(--accent-ink);font-weight:800;border:0;border-radius:14px;margin:18px 0 0;min-height:51px}.primary:active{transform:scale(.995)}.breakdown{list-style:none;padding:0;margin:0}.breakdown li{display:flex;justify-content:space-between;align-items:baseline;gap:15px;padding:10px 0;border-bottom:1px solid #2b3549;font-size:13px}.breakdown li:last-child{border-bottom:0}.breakdown span:first-child{color:#c4cedd}.breakdown strong{font-weight:740;font-variant-numeric:tabular-nums;white-space:nowrap}.breakdown .special strong{color:var(--accent)}h2{font-size:16px;margin:0 0 10px}.disclaimer{font-size:12px;color:var(--muted);line-height:1.6;margin:6px 0 0}.advanced{background:var(--surface);border:1px solid var(--border);border-radius:19px;margin-bottom:17px;padding:0 16px}.advanced summary{list-style:none;display:flex;align-items:center;justify-content:space-between;padding:17px 1px;cursor:pointer;font-size:14px;font-weight:760}.advanced summary::-webkit-details-marker{display:none}.advanced summary:after{content:'+';font-size:24px;color:var(--accent);font-weight:500;line-height:1}.advanced[open] summary:after{content:'−'}.advanced-content{border-top:1px solid var(--border);padding:17px 0 15px}.advgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.advfield label{font-size:12px;color:#cbd5e2;display:block;margin-bottom:7px;line-height:1.4}.advfield input{color:#fff;background:#0d1420;border:1px solid #445169;min-width:0;width:100%;font-size:17px;font-weight:700;border-radius:10px;padding:11px 10px;outline:none;min-height:45px;font-variant-numeric:tabular-nums}.advfield input:focus{border-color:var(--accent)}.advinfo{font-size:11px;color:var(--muted);margin:13px 0 0}.reset{background:none;border:1px solid #47546b;color:#d2dae5;border-radius:10px;min-height:37px;padding:7px 12px;margin-top:12px;font-size:12px;font-weight:650}.footer{text-align:center;color:#7e8ba2;font-size:11px;line-height:1.5;padding:0 12px}.error{display:none;color:#ffd0a8;font-size:12px;margin:8px 0 0}.error.show{display:block}.why{color:var(--muted);font-size:12px;line-height:1.6;margin:12px 0 0}.why strong{color:#e7edf7}.tag{display:inline-block;border-radius:6px;border:1px solid #476b5c;color:#b7f4dc;font-size:10px;padding:2px 6px;margin-left:6px;vertical-align:1px}.status{color:var(--accent);font-size:12px;text-align:center;margin:8px 0 0;min-height:18px}.section-note{font-size:12px;color:var(--warn);margin-top:13px;line-height:1.5}@media(max-width:345px){main{padding-left:11px;padding-right:11px}.panel{padding:15px}.radio-grid{gap:6px}.radio-ui{padding:10px 8px}.moneyinput{font-size:24px}.result-sum{font-size:30px}}@media(prefers-reduced-motion:no-preference){.primary,.radio-ui{transition:background-color .15s,border-color .15s,transform .12s}}
+  </style>
+</head>
+<body>
+<main>
+  <header class="mast">
+    <div class="logo" aria-hidden="true">Bs.</div>
+    <div><p class="brand">Calculadora de pagos</p><p class="subbrand">Para estimar recargas en Ubii · Venezuela</p></div>
+  </header>
+  <section class="panel" aria-label="Datos para la estimación">
+    <p class="eyebrow">Calcula antes de transferir</p>
+    <h1>¿Cuánto debo recargar?</h1>
+    <p class="lede">Introduce los bolívares que te indica la aplicación. Calcularemos el monto bruto para cubrir las comisiones estimadas de una sola vez.</p>
+    <label for="amount" class="field-label">Monto que te muestra la app</label>
+    <div class="input-frame"><span class="prefix">Bs.</span><input id="amount" class="moneyinput" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" value="10.000" aria-describedby="example" /></div>
+    <p class="hint" id="example">Ejemplo: 10.000 o 10.000,50</p>
+    <div id="validation" class="error" role="alert">Introduce un monto válido en bolívares.</div>
+    <p class="question">¿Ese monto ya incluye los gastos administrativos?</p>
+    <div class="radio-grid" role="group" aria-label="Tipo de monto">
+      <label class="radio-card"><input type="radio" name="mode" value="total" checked><span class="radio-ui"><span class="radio-title">Sí, es el total</span><span class="radio-desc">Solo agrego la comisión de recarga.</span></span></label>
+      <label class="radio-card"><input type="radio" name="mode" value="base"><span class="radio-ui"><span class="radio-title">No, es la cuota base</span><span class="radio-desc">Agrego gastos administrativos y la comisión.</span></span></label>
+    </div>
+    <p class="hint">Si la app dice «total pendiente a pagar», elige la primera opción. No sumes los gastos dos veces.</p>
+  </section>
+  <section class="result" aria-live="polite" aria-atomic="true">
+    <div class="result-label">Recarga sugerida <span class="tag">estimación</span></div>
+    <div class="result-sum" id="gross">Bs. 10.050,26</div>
+    <p class="result-detail" id="message">Monto redondeado hacia arriba para cubrir la comisión estimada.</p>
+    <button class="primary" type="button" id="copy" aria-label="Copiar monto de recarga"><span aria-hidden="true">▢</span> Copiar monto</button>
+    <div class="status" id="status" role="status"></div>
+  </section>
+  <section class="panel" aria-labelledby="breakdown-title">
+    <h2 id="breakdown-title">Así se calcula</h2>
+    <ul class="breakdown">
+      <li><span>Monto indicado</span><strong id="bBase">Bs. 10.000,00</strong></li>
+      <li><span>Gastos administrativos añadidos</span><strong id="bAdmin">Bs. 0,00</strong></li>
+      <li><span>Otros cargos pendientes</span><strong id="bExtra">Bs. 0,00</strong></li>
+      <li><span>Saldo que ya tienes</span><strong id="bBalance">−Bs. 0,00</strong></li>
+      <li><span>Comisión sobre esta recarga</span><strong id="bFee">Bs. 50,25</strong></li>
+      <li class="special"><span>Recarga neta disponible</span><strong id="bNet">Bs. 10.000,01</strong></li>
+    </ul>
+    <p class="why" id="logic">Ejemplo: la comisión observada es 0,5%. Si depositas exactamente Bs. 10.000, se descuentan Bs. 50 y no alcanza para cubrir Bs. 10.000.</p>
+    <p class="section-note" id="surplus">Puede sobrar un céntimo por redondeo. Eso no es otra comisión.</p>
+  </section>
+  <details class="advanced" id="more">
+    <summary>Opciones avanzadas</summary>
+    <div class="advanced-content">
+      <div class="advgrid">
+        <div class="advfield"><label for="fee">Comisión por recarga (%)</label><input id="fee" type="text" inputmode="decimal" value="0,5" aria-label="Porcentaje de comisión por recarga"></div>
+        <div class="advfield"><label for="admin">Gastos administrativos (%)</label><input id="admin" type="text" inputmode="decimal" value="9" aria-label="Porcentaje de gastos administrativos"></div>
+        <div class="advfield"><label for="balance">Saldo disponible (Bs.)</label><input id="balance" type="text" inputmode="decimal" value="0" aria-label="Saldo disponible en bolívares"></div>
+        <div class="advfield"><label for="other">Otros cargos (Bs.)</label><input id="other" type="text" inputmode="decimal" value="0" aria-label="Otros cargos pendientes en bolívares"></div>
+        <div class="advfield"><label for="buffer">Margen extra voluntario (Bs.)</label><input id="buffer" type="text" inputmode="decimal" value="0" aria-label="Margen adicional de seguridad en bolívares"></div>
+      </div>
+      <p class="advinfo">El porcentaje administrativo solo se aplica cuando eliges «No, es la cuota base». «Otros cargos» sirve para importes confirmados, como una reactivación. El margen voluntario no es una comisión.</p>
+      <button type="button" class="reset" id="reset">Restaurar porcentajes y saldos</button>
+    </div>
+  </details>
+  <section class="panel" aria-labelledby="instructions">
+    <h2 id="instructions">Importante antes de pagar</h2>
+    <p class="disclaimer">La estimación utiliza las proporciones observadas en tus capturas: <strong>0,5%</strong> por recarga y aproximadamente <strong>9%</strong> en gastos administrativos. No está verificado si el total mostrado por Ubii ya incluye todos los conceptos, ni su orden exacto de cobro, tasas de cambio o posibles cargos extraordinarios. Una cifra calculada aquí no garantiza la cancelación total de tu deuda.</p>
+    <p class="disclaimer">Si la aplicación cambia el importe exigible, aplica mora o utiliza otra comisión, confirma el monto con su desglose antes de transferir. Esta herramienta no está afiliada a Ubii, no se conecta a tu cuenta, no solicita datos personales y funciona sin internet.</p>
+  </section>
+  <footer class="footer">Calculadora independiente · Funciona sin internet · No afiliada a Ubii.</footer>
+</main>
+<script>
+(function () {
+  'use strict';
+  const byId=id=>document.getElementById(id);
+  const controls=['amount','fee','admin','balance','other','buffer'].map(byId);
+  const form=byId('amount');
+  const currency=new Intl.NumberFormat('es-VE',{minimumFractionDigits:2,maximumFractionDigits:2});
+  const formatMoney=cents=>'Bs. '+currency.format(cents/100);
+  let lastGross=null;
+  let lastText='';
+
+  // Permite 10000, 10.000, 10.000,50, 10000.50 y 0,5.
+  function decimal(raw){
+    let s=String(raw).trim().replace(/\s/g,'').replace(/^Bs\.?/i,'');
+    if(!s) return NaN;
+    if(!/^[0-9.,]+$/.test(s)) return NaN;
+    if(s.includes(',')){
+      const parts=s.split(',');
+      if(parts.length!==2 || parts[1].length>2) return NaN;
+      s=parts[0].replace(/\./g,'')+'.'+parts[1];
+    }else if(/^\d{1,3}(\.\d{3})+$/.test(s)){
+      s=s.replace(/\./g,'');
+    }else if(s.split('.').length!==2 && s.includes('.')){
+      return NaN;
+    }
+    return /^\d+(?:\.\d{0,2})?$/.test(s)?Number(s):NaN;
+  }
+  const cents=(raw)=>{
+    const val=decimal(raw);
+    return Number.isFinite(val) && val>=0 && val<=1e11 ? Math.round(val*100):NaN;
+  };
+  const bps=(raw)=>{
+    const val=decimal(raw);
+    return Number.isFinite(val) && val>=0 && val<100?Math.round(val*100):NaN;
+  };
+  // Porcentajes en puntos básicos (50 = 0,50%) y céntimos enteros.
+  const percent=(value,points)=>Math.floor((value*points+5000)/10000);
+  const ceilDiv=(num,den)=>Math.ceil(num/den);
+  function calculate(){
+    const amount=cents(form.value);
+    const recarga=bps(byId('fee').value);
+    const administrativo=bps(byId('admin').value);
+    const saldo=cents(byId('balance').value);
+    const otros=cents(byId('other').value);
+    const margen=cents(byId('buffer').value);
+    const isBase=document.querySelector('input[name="mode"]:checked').value==='base';
+    const invalid=[amount,recarga,administrativo,saldo,otros,margen].some(n=>!Number.isFinite(n));
+    byId('validation').classList.toggle('show',invalid);
+    if(invalid){byId('gross').textContent='—';byId('message').textContent='Revisa los importes y porcentajes introducidos.';byId('copy').disabled=true;lastGross=null;return;}
+    const adminCharge=isBase?percent(amount,administrativo):0;
+    const due=amount+adminCharge+otros;
+    const required=Math.max(0,due-saldo);
+    const netNeed=required+margen;
+    // La comisión puede redondearse al céntimo. Calculamos conservadoramente
+    // con la tasa exacta y redondeamos el bruto al céntimo superior.
+    let gross=ceilDiv(netNeed*10000,10000-recarga);
+    const fee=percent(gross,recarga);
+    const net=gross-fee;
+    const surplus=saldo+net-due;
+    const remaining=Math.max(0,-surplus);
+    lastGross=gross;
+    lastText=formatMoney(gross);
+    byId('gross').textContent=lastText;
+    byId('message').textContent= gross===0
+      ?'Según los valores introducidos, tu saldo disponible cubre el importe.'
+      :'Monto bruto estimado para que la recarga neta cubra lo pendiente.';
+    byId('bBase').textContent=formatMoney(amount);
+    byId('bAdmin').textContent=formatMoney(adminCharge);
+    byId('bExtra').textContent=formatMoney(otros);
+    byId('bBalance').textContent='−'+formatMoney(Math.min(saldo,due));
+    byId('bFee').textContent=formatMoney(fee);
+    byId('bNet').textContent=formatMoney(net);
+    byId('logic').textContent=isBase
+      ?`Se suman ${currency.format(administrativo/100)}% de gastos sobre la cuota base y después se calcula una recarga que compense ${currency.format(recarga/100)}% de comisión.`
+      :`No se suma el 9% de gastos al total indicado. Solo se compensa la comisión de recarga (${currency.format(recarga/100)}%) y los ajustes que introdujiste.`;
+    byId('surplus').textContent=remaining>0
+      ?`Advertencia: faltan ${formatMoney(remaining)} por el redondeo supuesto. Confirma antes de pagar.`
+      :`Excedente teórico después de los cobros: ${formatMoney(surplus)}${margen?' (incluye tu margen voluntario)':''}. Puede diferir por redondeos de la app.`;
+    byId('copy').disabled=false;
+  }
+  controls.forEach(c=>c.addEventListener('input',calculate));
+  document.querySelectorAll('input[name="mode"]').forEach(c=>c.addEventListener('change',calculate));
+  byId('reset').addEventListener('click',()=>{
+    byId('fee').value='0,5';byId('admin').value='9';byId('balance').value='0';byId('other').value='0';byId('buffer').value='0';calculate();
+  });
+  byId('copy').addEventListener('click',async()=>{
+    if(lastGross===null)return;
+    const s=lastText;
+    let copied=false;
+    try{if(window.AndroidCopy && typeof window.AndroidCopy.copyText==='function'){window.AndroidCopy.copyText(s);copied=true;}}catch(_){}
+    if(!copied){try{if(navigator.clipboard?.writeText){await navigator.clipboard.writeText(s);copied=true}}catch(_){}}
+    if(!copied){
+      const t=document.createElement('textarea');t.value=s;t.style.position='fixed';t.style.left='-1000px';document.body.appendChild(t);t.select();
+      try{copied=document.execCommand('copy')}catch(_){}t.remove();
+    }
+    byId('status').textContent=copied?'✓ Monto copiado':'Selecciona el monto grande para copiarlo manualmente.';
+  });
+  calculate();
+})();
+</script>
+</body>
+</html>
